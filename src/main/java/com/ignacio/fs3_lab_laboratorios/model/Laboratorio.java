@@ -3,6 +3,7 @@ package com.ignacio.fs3_lab_laboratorios.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "laboratorios")
 public class Laboratorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

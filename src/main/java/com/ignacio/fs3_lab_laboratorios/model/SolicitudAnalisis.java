@@ -3,12 +3,11 @@ package com.ignacio.fs3_lab_laboratorios.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "solicitudes_analisis")
 public class SolicitudAnalisis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nombrePaciente;
-    private String tipoAnalisis;
     private String fechaSolicitud;
     private String estado;
     private Integer usuarioId;
@@ -23,22 +22,14 @@ public class SolicitudAnalisis {
 
     public SolicitudAnalisis() {}
 
-    public SolicitudAnalisis(Integer id, String nombrePaciente, String tipoAnalisis, String fechaSolicitud, String estado) {
+    public SolicitudAnalisis(Integer id, String fechaSolicitud, String estado) {
         this.id = id;
-        this.nombrePaciente = nombrePaciente;
-        this.tipoAnalisis = tipoAnalisis;
         this.fechaSolicitud = fechaSolicitud;
         this.estado = estado;
     }
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
-
-    public String getNombrePaciente() { return nombrePaciente; }
-    public void setNombrePaciente(String nombrePaciente) { this.nombrePaciente = nombrePaciente; }
-
-    public String getTipoAnalisis() { return tipoAnalisis; }
-    public void setTipoAnalisis(String tipoAnalisis) { this.tipoAnalisis = tipoAnalisis; }
 
     public String getFechaSolicitud() { return fechaSolicitud; }
     public void setFechaSolicitud(String fechaSolicitud) { this.fechaSolicitud = fechaSolicitud; }
@@ -51,15 +42,7 @@ public class SolicitudAnalisis {
 
     public Laboratorio getLaboratorio() { return laboratorio; }
     public void setLaboratorio(Laboratorio laboratorio) { this.laboratorio = laboratorio; }
-    
+
     public Analisis getAnalisis() { return analisis; }
     public void setAnalisis(Analisis analisis) { this.analisis = analisis; }
-
-    public void mostrarInformacion() {
-        System.out.println("ID: " + id);
-        System.out.println("Nombre del Paciente: " + nombrePaciente);
-        System.out.println("Tipo de Análisis: " + tipoAnalisis);
-        System.out.println("Fecha de Solicitud: " + fechaSolicitud);
-        System.out.println("Estado: " + estado);
-    }
 }

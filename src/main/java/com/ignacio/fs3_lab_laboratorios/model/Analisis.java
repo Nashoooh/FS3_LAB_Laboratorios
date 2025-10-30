@@ -3,6 +3,7 @@ package com.ignacio.fs3_lab_laboratorios.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "analisis")
 public class Analisis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Analisis {
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
-    
+
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 }
