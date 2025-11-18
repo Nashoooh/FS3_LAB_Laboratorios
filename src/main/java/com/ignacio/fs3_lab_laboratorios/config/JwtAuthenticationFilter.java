@@ -21,6 +21,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         
+        // Permitir peticiones OPTIONS (CORS preflight) sin autenticación
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            filterChain.doFilter(request, response);
+            return;
+        }
+        
         System.out.println("=== Filtro JWT ejecutándose ===");
         String authHeader = request.getHeader("Authorization");
         System.out.println("Header Authorization: " + (authHeader != null ? "Presente" : "Ausente"));
