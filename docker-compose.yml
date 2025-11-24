@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  laboratorios-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fs3-lab-laboratorios:latest
+    container_name: laboratorios-service
+    ports:
+      - "9100:9100"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://190.107.177.36:3306/cna109955_libreria
+      - SPRING_DATASOURCE_USERNAME=cna109955_admin
+      - SPRING_DATASOURCE_PASSWORD=Terry.1078
+      - SERVER_PORT=9100
+      - JWT_SECRET=mySecretKeyForJWT2024ThisIsAVeryLongSecretKeyThatMeetsRequirements
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
